@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snapfile — getting started</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 48px 20px; background: #f5f7fb; color: #14213d;
+    font: 15px/1.6 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+  .card {
+    max-width: 560px; margin: 0 auto; background: #fff; border-radius: 16px;
+    box-shadow: 0 8px 40px rgba(20,33,61,.10); overflow: hidden;
+  }
+  .head {
+    background: #2b8cff; color: #fff; padding: 28px 32px; display: flex; align-items: center; gap: 14px;
+  }
+  .head img { width: 44px; height: 44px; }
+  .head h1 { margin: 0; font-size: 20px; }
+  .head p { margin: 2px 0 0; opacity: .9; font-size: 13px; }
+  .body { padding: 26px 32px 32px; }
+  h2 { font-size: 15px; margin: 22px 0 8px; }
+  h2:first-child { margin-top: 0; }
+  ol { margin: 0; padding-left: 20px; }
+  ol li { margin: 4px 0; }
+  kbd {
+    font: 12px/1 ui-monospace, Consolas, monospace; background: #eef2f9; border: 1px solid #d6deea;
+    border-bottom-width: 2px; border-radius: 5px; padding: 2px 6px;
+  }
+  .note {
+    margin-top: 8px; background: #fff8e6; border: 1px solid #ffe39a; border-radius: 10px;
+    padding: 14px 16px; font-size: 14px;
+  }
+  .note b { color: #8a6d00; }
+  .btn {
+    display: inline-block; margin-top: 14px; cursor: pointer; border: none;
+    background: #2b8cff; color: #fff; font: 600 14px/1 system-ui, sans-serif;
+    padding: 11px 18px; border-radius: 9px;
+  }
+  .btn:hover { background: #1f7bea; }
+  .btn-sec {
+    margin-top: 0; background: #fff; color: #2b8cff; border: 1.5px solid #2b8cff;
+    padding: 6px 12px; font-size: 13px;
+  }
+  .btn-sec:hover { background: #eef5ff; }
+  .shortcut-line {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+    margin-top: 12px; font-size: 13px; color: #48536b;
+  }
+  .row { display: flex; gap: 10px; align-items: flex-start; margin-top: 8px; }
+  .row input[type=checkbox] {
+    width: 16px; height: 16px; margin-top: 3px; accent-color: #2b8cff; cursor: pointer; flex: none;
+  }
+  .row label { cursor: pointer; }
+  #status { color: #2b8cff; font-size: 12px; height: 16px; margin-top: 8px; font-weight: 600; }
+  .hint { font-size: 12px; color: #6b7689; margin-top: 8px; }
+  .foot { font-size: 12px; color: #6b7689; margin-top: 22px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <img src="icons/icon128.png" alt="Snapfile" width="44" height="44">
+      <div>
+        <h1>Snapfile is ready</h1>
+        <p>Drag to capture an area — straight to your Downloads.</p>
+      </div>
+    </div>
+    <div class="body">
+
+      <h2>How to use</h2>
+      <ol>
+        <li>Click the Snapfile icon, or press <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></li>
+        <li>Drag to select an area (resize with the handles, drag the middle to move)</li>
+        <li>Click <b>Save</b> or press <kbd>Enter</kbd> — the PNG lands in your Downloads</li>
+        <li><kbd>Esc</kbd> cancels anytime</li>
+      </ol>
+      <div class="shortcut-line">
+        <span>Default shortcut: <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></span>
+        <button class="btn btn-sec" id="openShortcuts">Change shortcut</button>
+      </div>
+
+      <h2>Capture mode</h2>
+      <div class="row">
+        <input type="checkbox" id="editMode">
+        <label for="editMode">
+          Refine before saving
+          <div class="hint">Off (default): release the mouse and the PNG saves instantly — one gesture. On: after selecting, resize or move the area with handles, then click Save (or press Enter).</div>
+        </label>
+      </div>
+      <div id="status"></div>
+
+      <h2>One-time setup for truly instant saves</h2>
+      <p>
+        Snapfile never forces a dialog. But Chrome has a global setting that asks
+        where to save <em>every</em> download — if it's on, you'll see a “Save as”
+        window each time.
+      </p>
+      <div class="note">
+        For instant, no-click saving, turn <b>off</b>:
+        <br>“Ask where to save each file before downloading”
+      </div>
+      <button class="btn" id="openSettings">Open Chrome download settings</button>
+      <div class="hint">
+        Opens <code>chrome://settings/downloads</code>. We can't change this setting for you —
+        Chrome only lets you toggle it yourself.
+      </div>
+
+      <div class="foot">
+        You can reopen this page anytime from the extension's <b>Options</b>.
+      </div>
+    </div>
+  </div>
+  <script src="welcome.js"></script>
+</body>
+</html>

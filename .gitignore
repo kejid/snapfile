@@ -1,0 +1,11 @@
+﻿# local / dev — not shipped, not published
+.claude/
+demo-scenes/
+test/
+_preview-root.js
+_release/
+*.zip
+
+# OS
+Thumbs.db
+.DS_Store

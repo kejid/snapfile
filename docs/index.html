@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Snapfile — Area Screenshot Straight to a File</title>
+<meta name="description" content="Drag to select an area and the PNG drops straight into your Downloads. Instant, private, no editor — nothing uploaded to any server. Free Chrome extension.">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:title" content="Snapfile — Area Screenshot Straight to a File">
+<meta property="og:description" content="Drag, release, done. The PNG is in your Downloads — no editor, no preview, nothing uploaded.">
+<meta property="og:type" content="website">
+<!-- <meta property="og:image" content="https://YOURNAME.github.io/snapfile/og.png"> -->
+<meta name="twitter:card" content="summary_large_image">
+
+<style>
+  :root{
+    --blue:#2b8cff; --blue-d:#1f7bea; --ink:#14213d; --muted:#5b6678;
+    --bg:#f5f7fb; --card:#fff; --line:#e6ebf3;
+    color-scheme:light;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit}
+  .wrap{max-width:980px;margin:0 auto;padding:0 20px}
+
+  /* nav */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px}
+  .brand svg{width:30px;height:30px;display:block}
+  .nav-cta{font-size:14px;font-weight:600;text-decoration:none;color:var(--blue)}
+
+  /* hero */
+  .hero{text-align:center;padding:56px 0 36px}
+  .hero h1{font-size:clamp(30px,5vw,46px);line-height:1.1;margin:0 0 16px;letter-spacing:-.02em}
+  .hero h1 .accent{color:var(--blue)}
+  .hero p.sub{font-size:clamp(17px,2.4vw,20px);color:var(--muted);max-width:620px;margin:0 auto 28px}
+  .cta{
+    display:inline-flex;align-items:center;gap:9px;background:var(--blue);color:#fff;
+    text-decoration:none;font-weight:700;font-size:17px;padding:14px 26px;border-radius:12px;
+    box-shadow:0 6px 20px rgba(43,140,255,.35);transition:transform .08s,background .12s;
+  }
+  .cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+  .cta svg{width:20px;height:20px}
+  .cta-note{margin-top:12px;font-size:13px;color:var(--muted)}
+
+  /* demo */
+  .demo{margin:40px auto 0;max-width:600px}
+  .demo .frame{
+    position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line);
+    background:#0e1525;box-shadow:0 16px 50px rgba(20,33,61,.16);
+  }
+  .demo video{width:100%;height:auto;display:block}
+  /* placeholder shown until demo.gif exists */
+  .demo .ph{color:#9fb3d6;font-size:15px;text-align:center;padding:24px;line-height:1.5}
+  .demo .ph b{color:#fff;display:block;font-size:17px;margin-bottom:6px}
+
+  /* features */
+  section{padding:48px 0}
+  h2{font-size:clamp(24px,3.4vw,32px);text-align:center;margin:0 0 8px;letter-spacing:-.01em}
+  .lead{text-align:center;color:var(--muted);max-width:600px;margin:0 auto 36px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .card .ico{width:42px;height:42px;border-radius:10px;background:#eaf3ff;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+  .card h3{margin:0 0 6px;font-size:17px}
+  .card p{margin:0;color:var(--muted);font-size:15px}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;position:relative}
+  .step::before{counter-increment:s;content:counter(s);position:absolute;top:-14px;left:22px;width:28px;height:28px;border-radius:8px;background:var(--blue);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .step h3{margin:8px 0 4px;font-size:16px}
+  .step p{margin:0;color:var(--muted);font-size:14px}
+  kbd{font:13px/1 ui-monospace,Consolas,monospace;background:#eef2f9;border:1px solid #d6deea;border-bottom-width:2px;border-radius:5px;padding:2px 6px}
+
+  /* privacy */
+  .privacy{background:var(--ink);color:#fff;border-radius:18px;padding:40px 32px;text-align:center}
+  .privacy h2{color:#fff}
+  .privacy p{color:#c4ccda;max-width:620px;margin:0 auto}
+  .privacy .vs{display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px;font-size:14px}
+  .privacy .pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:7px 14px}
+  .privacy .pill b{color:#6ab7ff}
+
+  /* final */
+  .final{text-align:center;padding:56px 0}
+  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px;text-align:center}
+  footer a{color:var(--muted);text-decoration:none;margin:0 10px}
+  footer a:hover{color:var(--ink)}
+
+  @media (max-width:720px){
+    .grid,.steps{grid-template-columns:1fr}
+    .hero{padding:36px 0 24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- brand logo, reused -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><g id="logo" >
+  <rect x="8" y="8" width="112" height="112" rx="30" fill="#2b8cff"/>
+  <g fill="#fff">
+    <rect x="30.7" y="30.7" width="19.2" height="9.6"/><rect x="30.7" y="30.7" width="9.6" height="19.2"/>
+    <rect x="78.1" y="30.7" width="19.2" height="9.6"/><rect x="87.7" y="30.7" width="9.6" height="19.2"/>
+    <rect x="30.7" y="87.7" width="19.2" height="9.6"/><rect x="30.7" y="78.1" width="9.6" height="19.2"/>
+    <rect x="78.1" y="87.7" width="19.2" height="9.6"/><rect x="87.7" y="78.1" width="9.6" height="19.2"/>
+    <rect x="56.96" y="40.96" width="14.08" height="28.16"/>
+    <polygon points="42.24,64 85.76,64 64,92.16"/>
+  </g>
+</g></defs></svg>
+
+<div class="wrap">
+  <nav>
+    <div class="brand"><svg viewBox="0 0 128 128"><use href="#logo"/></svg> Snapfile</div>
+    <a class="nav-cta" href="#get">Add to Chrome →</a>
+  </nav>
+
+  <header class="hero">
+    <h1>Screenshot to a file.<br><span class="accent">No BS.</span></h1>
+    <p class="sub">Drag, release, done — the PNG's in your Downloads. No editor, no preview, no account, no cloud. One job, then it gets out of your way.</p>
+    <!-- TODO: replace # with your Chrome Web Store URL -->
+    <a class="cta" id="get" href="#">
+      <svg viewBox="0 0 128 128"><use href="#logo"/></svg> Add to Chrome — it's free
+    </a>
+    <div class="cta-note">Free. No sign-up, no “upgrade to Pro”, no catch.</div>
+
+    <div class="demo">
+      <div class="frame">
+        <video src="demo.mp4" autoplay loop muted playsinline
+               aria-label="Snapfile in action: drag an area, the PNG saves instantly"></video>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="wrap">
+  <section>
+    <h2>It does the thing and shuts up</h2>
+    <p class="lead">Every other screenshot tool wants to be a photo studio. This one hands you the file and leaves.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ico">⚡</div>
+        <h3>Release. It's saved.</h3>
+        <p>No “Save” button to hunt for. Drop the mouse and the PNG is on disk.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🔒</div>
+        <h3>None of our business</h3>
+        <p>Nothing uploaded, ever — no account, no cloud. We literally can't see your screenshots.</p>
+      </div>
+      <div class="card">
+        <div class="ico">✂️</div>
+        <h3>One job</h3>
+        <p>No editor, no annotations, no onboarding tour. Pixel-accurate on HiDPI and any zoom.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <p class="lead">Three seconds, one gesture.</p>
+    <div class="steps">
+      <div class="step"><h3>Trigger</h3><p>Press <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd> or click the icon.</p></div>
+      <div class="step"><h3>Drag</h3><p>Select the area you want to capture.</p></div>
+      <div class="step"><h3>Done</h3><p>Release — the PNG is in your Downloads.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="privacy">
+      <h2>We literally can't see your screenshots</h2>
+      <p>The “free” tools ship every capture to their servers for a share link you didn't ask for. Snapfile writes a PNG to your disk and that's the end of the transaction — no uploads, no telemetry, no account. There's no server to send anything to.</p>
+      <div class="vs">
+        <span class="pill">Saved <b>locally</b>, always</span>
+        <span class="pill"><b>No</b> uploads</span>
+        <span class="pill"><b>No</b> account</span>
+        <span class="pill">Minimal permissions</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <h2>Stop reading. Drag a box.</h2>
+    <p class="lead">Install, hit the shortcut, drag. That's the whole product — there's nothing else to learn.</p>
+    <!-- TODO: replace # with your Chrome Web Store URL -->
+    <a class="cta" href="#"><svg viewBox="0 0 128 128"><use href="#logo"/></svg> Add to Chrome — it's free</a>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <!-- TODO: fill real links -->
+    <a href="#">Chrome Web Store</a> ·
+    <a href="#">Privacy</a> ·
+    <a href="#">GitHub</a>
+    <div style="margin-top:10px">© Snapfile</div>
+  </div>
+</footer>
+
+</body>
+</html>
