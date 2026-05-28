@@ -2,9 +2,15 @@
 
 Activate → select an area → PNG lands in Downloads instantly. No editor, no preview, no extra clicks. One gesture.
 
+**[→ Install from the Chrome Web Store](https://chromewebstore.google.com/detail/pihkdbcfgdpniaidlhcjfajlhdhmglcd)** &nbsp;·&nbsp; [Landing](https://kejid.github.io/snapfile/) &nbsp;·&nbsp; [Privacy](https://kejid.github.io/snapfile/privacy.html)
+
 This is a build-first MVP of a friction-removal angle (see the `gold_prospector` scouting log): the pain isn't validated by research (nobody googles or complains about "the extra step"), so we validate by building and shipping, then watching the reaction.
 
-## Install (load unpacked, ~1 minute)
+## Install from the Chrome Web Store
+
+[chromewebstore.google.com/detail/pihkdbcfgdpniaidlhcjfajlhdhmglcd](https://chromewebstore.google.com/detail/pihkdbcfgdpniaidlhcjfajlhdhmglcd) — one click, done.
+
+## Install unpacked (for development, ~1 minute)
 
 1. Open `chrome://extensions`
 2. Enable **Developer mode** (toggle, top-right)
