@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kejid.github.io/snapfile/sitemap.xml
