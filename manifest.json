@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Snapfile — area screenshot straight to file",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Drag to select an area, get a PNG in your Downloads instantly. No editor, no preview, no extra clicks.",
   "permissions": ["activeTab", "scripting", "downloads", "storage"],
   "background": { "service_worker": "background.js" },
